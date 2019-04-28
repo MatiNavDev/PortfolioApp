@@ -1,0 +1,52 @@
+.Toolbar {
+  height: 56px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(191, 191, 191, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 90;
+  transition: top 0.4s linear;
+}
+
+.Toolbar nav {
+  height: 100%;
+}
+
+/*  we'll add this class using javascript
+ add 1px of height to $header-height to accomodate for bottom border
+ +5 to accommodate for the focus glow */
+.nav-up {
+  top: calc(-56px - 1px - 5px);
+}
+
+.Toolbar ul {
+  list-style-type: none;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  margin-right: 30px;
+}
+
+.Toolbar li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-transform: capitalize;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.Toolbar li:hover {
+  background-color: rgba(218, 223, 225, 0.6);
+  transition: background-color 0.3s ease-out;
+}
+
+.Toolbar a {
+  color: cornflowerblue;
+}

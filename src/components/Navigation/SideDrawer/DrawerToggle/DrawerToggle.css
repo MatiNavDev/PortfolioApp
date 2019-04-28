@@ -1,0 +1,109 @@
+.DrawerToggle {
+  position: fixed;
+  right: 33px;
+  bottom: 26px;
+  cursor: pointer;
+  display: flex;
+  width: 107px;
+  height: 51px;
+  z-index: 101;
+  border-radius: 30px;
+}
+
+.menu {
+  padding: 10px 3px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: cornflowerblue;
+  animation: showUpManColor 1s linear forwards;
+  font-family: overpass, helvetica, arial, sans-serif;
+  letter-spacing: -1px;
+  font-size: 1.2rem;
+}
+
+.divsContainer {
+  width: 40px;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 3px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.divsContainer div {
+  width: 90%;
+  height: 3px;
+  background-color: cornflowerblue;
+}
+
+.DrawerToggle .noActive {
+  opacity: 0;
+  animation: showUpManColor 1s linear forwards;
+}
+
+.DrawerToggle .active {
+  color: white;
+  animation: rotateToDie 2s ease-out;
+}
+
+.divsContainer .active {
+  background-color: white;
+}
+
+.divsContainer .active:first-child {
+  position: relative;
+  top: 8px;
+  transform: rotate(45deg);
+}
+
+.divsContainer .active:last-child {
+  position: relative;
+  top: -7px;
+  transform: rotate(135deg);
+}
+
+.divsContainer .active:nth-child(2) {
+  display: none;
+}
+
+@keyframes rotateToDie {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(1080%);
+  }
+}
+@keyframes showUpManBackground {
+  0% {
+    opacity: 0;
+  }
+
+  75% {
+    background-color: #0000ff9c;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes showUpManColor {
+  0% {
+    opacity: 0;
+  }
+
+  75% {
+    color: #0000ff9c;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

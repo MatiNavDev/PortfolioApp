@@ -1,0 +1,17 @@
+@media (max-width: 570px) {
+  .MediaItems {
+    margin-top: 44px;
+    opacity: 0;
+    animation: showUpMan 1s linear 1.2s forwards;
+  }
+
+  @keyframes showUpMan {
+    75% {
+      font: bold;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}

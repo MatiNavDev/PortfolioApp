@@ -1,0 +1,18 @@
+.SideDrawer {
+  left: 0;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  background-color: #86bee6;
+}
+
+.SideDrawer ul {
+  list-style-type: none;
+  text-transform: capitalize;
+}
+
+.SideDrawer a {
+  color: white;
+}

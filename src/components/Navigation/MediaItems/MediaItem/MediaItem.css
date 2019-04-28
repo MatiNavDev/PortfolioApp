@@ -1,0 +1,14 @@
+.MediaItem {
+  font-family: Montserrat, monospace;
+  font-size: 1rem;
+  margin-bottom: 18px;
+  letter-spacing: -1px;
+}
+
+.MediaItem .withSomeSpace {
+  padding-left: 6px;
+}
+
+.MediaItem a {
+  text-decoration: none;
+}
