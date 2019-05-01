@@ -12,18 +12,14 @@ const drawerToggle = props => {
 
   const menuText = opened ? "Close" : "Menu";
 
+  const menuClasses = opened
+    ? [classes.DrawerToggle, classes.active].join(" ")
+    : [classes.DrawerToggle, classes.noActive].join(" ");
+
   return (
     <React.Fragment>
-      <div className={classes.DrawerToggle} onClick={() => openOrClose()}>
-        <span
-          className={
-            opened
-              ? [classes.menu, classes.active].join(" ")
-              : [classes.menu, classes.noActive].join(" ")
-          }
-        >
-          {menuText}
-        </span>
+      <div className={menuClasses} onClick={() => openOrClose()}>
+        <span className={classes.menu}>{menuText}</span>
         <span className={classes.divsContainer}>{divsToShow}</span>
       </div>
     </React.Fragment>

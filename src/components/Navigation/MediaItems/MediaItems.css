@@ -1,8 +1,21 @@
+.MediaItems {
+  list-style-type: none;
+  text-transform: capitalize;
+}
+
+.MediaItems a {
+  color: #555;
+}
+
 @media (max-width: 570px) {
   .MediaItems {
     margin-top: 44px;
     opacity: 0;
     animation: showUpMan 1s linear 1.2s forwards;
+  }
+
+  .MediaItems a {
+    color: white;
   }
 
   @keyframes showUpMan {

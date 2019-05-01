@@ -10,6 +10,8 @@
   border-radius: 30px;
 }
 
+/* TODO: hacer que la animacion del menu sea moviendose 50 75 100 asi como efecto resorte (fijarse el sitio) */
+
 .menu {
   padding: 10px 3px;
   text-transform: uppercase;
@@ -17,7 +19,6 @@
   flex-direction: column;
   justify-content: center;
   color: cornflowerblue;
-  animation: showUpManColor 1s linear forwards;
   font-family: overpass, helvetica, arial, sans-serif;
   letter-spacing: -1px;
   font-size: 1.2rem;
@@ -41,18 +42,17 @@
   background-color: cornflowerblue;
 }
 
-.DrawerToggle .noActive {
-  opacity: 0;
-  animation: showUpManColor 1s linear forwards;
+.DrawerToggle.noActive {
+  animation: showUpMan 0.5s linear;
 }
 
-.DrawerToggle .active {
+.DrawerToggle.active .menu {
   color: white;
-  animation: rotateToDie 2s ease-out;
 }
 
-.divsContainer .active {
+.DrawerToggle.active .divsContainer div {
   background-color: white;
+  animation: rotateToDie 2s ease-out;
 }
 
 .divsContainer .active:first-child {
@@ -80,30 +80,24 @@
     transform: rotate(1080%);
   }
 }
-@keyframes showUpManBackground {
+@keyframes showUpMan {
   0% {
-    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  50% {
+    transform: translateY(-25%);
   }
 
   75% {
-    background-color: #0000ff9c;
+    transform: translateY(15%);
+  }
+
+  90% {
+    transform: translateY(-5%);
   }
 
   100% {
-    opacity: 1;
-  }
-}
-
-@keyframes showUpManColor {
-  0% {
-    opacity: 0;
-  }
-
-  75% {
-    color: #0000ff9c;
-  }
-
-  100% {
-    opacity: 1;
+    transform: translateY(0%);
   }
 }

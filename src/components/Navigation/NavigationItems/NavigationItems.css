@@ -3,10 +3,19 @@
   justify-content: space-evenly;
 }
 
+.NavigationItems {
+  list-style-type: none;
+  text-transform: capitalize;
+}
+
 @media (max-width: 530px) {
   .NavigationItems {
     width: 100%;
     justify-content: none;
+  }
+
+  .NavigationItems a {
+    color: white;
   }
 
   .NavigationItems li:first-child a {

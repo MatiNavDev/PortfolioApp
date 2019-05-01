@@ -49,4 +49,12 @@
 
 .Toolbar a {
   color: cornflowerblue;
+  position: relative;
+}
+.Toolbar a:after {
+  content: "";
+  padding: 50px;
+  position: absolute;
+  left: -30px;
+  top: -45px;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import WorkTogether from "../../components/Navigation/WorkTogether/WorkTogether";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 import DrawerToggle from "../../components/Navigation/SideDrawer/DrawerToggle/DrawerToggle";
 import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
@@ -49,7 +50,8 @@ class Layout extends Component {
     return (
       <React.Fragment>
         {navigationItemToShow}
-        <main className={classes.Layout}>{children}</main>;
+        <main className={classes.Layout}>{children}</main>
+        <WorkTogether />
       </React.Fragment>
     );
   }

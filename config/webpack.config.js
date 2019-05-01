@@ -1,5 +1,3 @@
-
-
 const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
@@ -299,7 +297,9 @@ module.exports = function(webpackEnv) {
             {
               options: {
                 formatter: require.resolve("react-dev-utils/eslintFormatter"),
-                eslintPath: require.resolve("eslint")
+                eslintPath: require.resolve("eslint"),
+                emitWarning: true,
+                emitError: false
               },
               loader: require.resolve("eslint-loader")
             }

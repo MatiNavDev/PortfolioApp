@@ -79,6 +79,7 @@ class Toolbar extends Component {
   };
 
   render() {
+    //TODO: verificar performance
     const classesToAdd = [classes.Toolbar, classes[this.state.navClass]];
 
     return (
