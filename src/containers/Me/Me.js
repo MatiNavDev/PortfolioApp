@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import TextWithName from "../../components/Me/TextWithName/TextWithName";
 import Topics from "../../components/Me/Topics/Topics";
+import classes from "./Me.css";
 
 class Me extends Component {
   state = {
@@ -48,6 +49,8 @@ class Me extends Component {
     this.setState({ actualTopicId, topicsWithText });
   }
 
+  handleTopicSelected = topicId => this.setState({ actualTopicId: topicId });
+
   render() {
     const { actualTopicId, topicsWithText } = this.state;
 
@@ -57,13 +60,27 @@ class Me extends Component {
       id: t.id,
       topic: t.topic
     }));
-
     return topicToShow ? (
-      <React.Fragment>
+      <div className={classes.Me}>
         <TextWithName topicToShow={topicToShow} />
-        <img src={topicToShow.image} />
-        <Topics topics={topicsForSelect} />
-      </React.Fragment>
+        <div className={classes.middlePart}>
+          <div
+            style={{
+              backgroundImage: `url('${topicToShow.image}')`,
+              width: "65%",
+              height: "365px",
+              display: "block",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center"
+            }}
+          />
+          <Topics
+            topics={topicsForSelect}
+            clicked={this.handleTopicSelected.bind(this)}
+          />
+        </div>
+      </div>
     ) : (
       <div>Loading...</div>
     );

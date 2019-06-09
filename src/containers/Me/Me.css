@@ -1,3 +1,11 @@
 .Me {
-  height: 1000px;
+  display: flex;
+}
+
+.Me .middlePart {
+  display: inline-flex;
+  width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,0 +1,21 @@
+.ToggleExperienceButton {
+  background-color: red;
+  display: inline-flex;
+  height: 159px;
+  width: 52px;
+  padding: 0;
+  flex-direction: column;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.ToggleExperienceButton div {
+  border: 1px solid rgb(175, 222, 246);
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: pre-wrap;
+  word-break: break-word;
+  cursor: pointer;
+}

@@ -17,14 +17,4 @@
   .MediaItems a {
     color: white;
   }
-
-  @keyframes showUpMan {
-    75% {
-      font: bold;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
 }

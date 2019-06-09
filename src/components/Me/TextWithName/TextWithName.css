@@ -1,0 +1,30 @@
+.TextWithName {
+  display: inline-flex;
+  width: 50%;
+  justify-content: space-around;
+}
+
+.TextWithName .letterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.TextWithName .text {
+  width: 50%;
+}
+
+@keyframes fadeInFromRight {
+  0% {
+    transform: translateX(-200%);
+  }
+
+  75% {
+    transform: translateX(25%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}

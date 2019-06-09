@@ -1,0 +1,17 @@
+.ExperienceCard {
+  height: 200px;
+  width: 200px;
+  flex-basis: 24%;
+}
+
+.ExperienceCard div {
+  height: 50%;
+  width: 100%;
+}
+
+.ExperienceCard div:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}

@@ -1,10 +1,17 @@
 import React from "react";
 import Proptypes from "prop-types";
 
-const topic = props => <span>{props.topic}</span>;
+import classes from "./Topic.css";
+
+const topic = props => (
+  <span className={classes.Topic} onClick={props.clicked}>
+    {props.name}
+  </span>
+);
 
 topic.propTypes = {
-  topic: Proptypes.string
+  name: Proptypes.string,
+  clicked: Proptypes.func
 };
 
 export default topic;
