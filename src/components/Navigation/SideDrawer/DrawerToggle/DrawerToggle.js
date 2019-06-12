@@ -7,7 +7,7 @@ const drawerToggle = props => {
   const { openOrClose, opened } = props;
   const divsToShow = [];
   for (let i = 0; i < 3; i++) {
-    divsToShow.push(<div className={opened ? classes.active : ""} />);
+    divsToShow.push(<div key={i} className={opened ? classes.active : ""} />);
   }
 
   const menuText = opened ? "Close" : "Menu";

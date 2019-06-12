@@ -7,8 +7,8 @@ import MediaItems from "../MediaItems/MediaItems";
 const sideDrawer = props => {
   /**
    * TODO:
-   * Hacer que mi nombre te abra el mail con mi direccion de correo puesta. Probablemente se tenga que transformar en otro
-   * componente porque va a tener que manejar el mobile y no mobile
+   * Hacer que mi nombre te abra el mail con mi direccion de correo puesta. Hacer una pantalla que sea para el envio de mail
+   * y mandarlo yo.
    */
 
   const { showSideDrawer, closed } = props;

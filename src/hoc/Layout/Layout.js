@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 import WorkTogether from "../../components/Navigation/WorkTogether/WorkTogether";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
@@ -9,21 +10,7 @@ import classes from "./Layout.css";
 
 class Layout extends Component {
   state = {
-    isMobile: false,
     showSideDrawer: false
-  };
-
-  componentDidMount() {
-    window.addEventListener("resize", this.resize.bind(this));
-    this.resize();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.resize.bind(this));
-  }
-
-  resize = () => {
-    this.setState({ isMobile: window.innerWidth <= 530 });
   };
 
   handleOpenOrCloseSideDrawer = () => {
@@ -31,8 +18,9 @@ class Layout extends Component {
   };
 
   render() {
+    console.log("Lay rendered");
     const { children } = this.props;
-    const navigationItemToShow = this.state.isMobile ? (
+    const navigationItemToShow = this.props.isMobile ? (
       <React.Fragment>
         <DrawerToggle
           openOrClose={() => this.handleOpenOrCloseSideDrawer()}
@@ -58,7 +46,14 @@ class Layout extends Component {
 }
 
 Layout.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
+  isMobile: PropTypes.bool
 };
 
-export default Layout;
+const mapStateToProps = state => {
+  return {
+    isMobile: state.common.isMobile
+  };
+};
+
+export default connect(mapStateToProps)(Layout);

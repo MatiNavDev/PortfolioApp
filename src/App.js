@@ -1,8 +1,11 @@
 import React, { Component, Suspense } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import classes from "./App.css";
 import Layout from "./hoc/Layout/Layout";
+import * as actions from "./store/actions";
 
 const Me = React.lazy(() => import("./containers/Me/Me"));
 const Experience = React.lazy(() =>
@@ -11,6 +14,19 @@ const Experience = React.lazy(() =>
 const Contact = React.lazy(() => import("./containers/Contact/Contact"));
 
 class App extends Component {
+  componentDidMount() {
+    window.addEventListener("resize", this.resize.bind(this));
+    this.resize();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.resize.bind(this));
+  }
+
+  resize = () => {
+    this.props.onSetIsMobile(window.innerWidth <= 530);
+  };
+
   render() {
     const routes = (
       <Switch>
@@ -51,4 +67,17 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    onSetIsMobile: isMobile => dispatch(actions.setIsMobile(isMobile))
+  };
+};
+
+App.propTypes = {
+  onSetIsMobile: PropTypes.func
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);
