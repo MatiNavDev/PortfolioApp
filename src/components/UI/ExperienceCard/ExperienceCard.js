@@ -1,10 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 
 import classes from "./ExperienceCard.css";
 
 const experienceCard = props => (
-  <div onClick={props.clicked} className={classes.ExperienceCard}>
+  <div
+    onClick={() => props.history.push(`experience/${props.id}`)}
+    className={classes.ExperienceCard}
+  >
     <div
       style={{
         backgroundImage: `url('${props.image}')`
@@ -17,7 +21,8 @@ const experienceCard = props => (
 experienceCard.propTypes = {
   image: PropTypes.string,
   title: PropTypes.string,
-  clicked: PropTypes.func
+  history: PropTypes.object,
+  id: PropTypes.number
 };
 
-export default experienceCard;
+export default withRouter(experienceCard);

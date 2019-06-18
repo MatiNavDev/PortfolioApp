@@ -1,17 +1,31 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 import classes from "./ToggleExperienceButton.css";
+import * as actions from "../../../store/actions";
 
-const toggleExperienceButton = props => (
-  <div className={classes.ToggleExperienceButton}>
-    <div onClick={() => props.onToggleHandler("P")}>Proyectos</div>
-    <div onClick={() => props.onToggleHandler("T")}>Tecnologias</div>
-  </div>
-);
+class ToggleExperienceButton extends Component {
+  render() {
+    return (
+      <div className={classes.ToggleExperienceButton}>
+        <div onClick={() => this.props.onToggleHandler("P")}>Proyectos</div>
+        <div onClick={() => this.props.onToggleHandler("T")}>Tecnologias</div>
+      </div>
+    );
+  }
+}
 
-toggleExperienceButton.propTypes = {
+const mapDispatchToProps = dispatch => ({
+  onToggleHandler: toggleHandlerChosen =>
+    dispatch(actions.setToggleHandler(toggleHandlerChosen))
+});
+
+ToggleExperienceButton.propTypes = {
   onToggleHandler: PropTypes.func
 };
 
-export default toggleExperienceButton;
+export default connect(
+  null,
+  mapDispatchToProps
+)(ToggleExperienceButton);

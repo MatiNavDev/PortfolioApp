@@ -4,7 +4,7 @@ import { setLoading, updateObject } from "../../shared/utility";
 const initialState = {
   topicIdSelected: 0,
   topics: [],
-  loading: true
+  loading: false
 };
 
 const fetchTopicsSuccess = (state, action) =>

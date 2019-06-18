@@ -11,6 +11,7 @@ import * as serviceWorker from "./serviceWorker";
 import commonReducer from "./store/reducers/common";
 import layoutReducer from "./store/reducers/layout";
 import meReducer from "./store/reducers/me";
+import experienceReducer from "./store/reducers/experience";
 
 const composeEnhancers =
   process.env.NODE_ENV == "development"
@@ -20,7 +21,8 @@ const composeEnhancers =
 const rootReducer = combineReducers({
   common: commonReducer,
   layout: layoutReducer,
-  me: meReducer
+  me: meReducer,
+  experience: experienceReducer
 });
 
 // const store = createStore(reducer, applyMiddleware(logger, xxx , ...)); al igual que en express
