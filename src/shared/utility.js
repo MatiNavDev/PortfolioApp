@@ -3,11 +3,16 @@
  * @param {*} object
  * @param {*} propertiesToUpdate
  */
-const updateObject = (object, propertiesToUpdate) => {
-  return {
-    ...object,
-    ...propertiesToUpdate
-  };
-};
+const updateObject = (object, propertiesToUpdate) => ({
+  ...object,
+  ...propertiesToUpdate
+});
 
-export { updateObject };
+/**
+ * Actualiza el estado de loading del state
+ * @param {*} state
+ * @param {*} loading
+ */
+const setLoading = (state, loading) => updateObject(state, { loading });
+
+export { updateObject, setLoading };

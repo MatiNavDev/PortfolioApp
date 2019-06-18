@@ -9,27 +9,12 @@ import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
 import classes from "./Layout.css";
 
 class Layout extends Component {
-  state = {
-    showSideDrawer: false
-  };
-
-  handleOpenOrCloseSideDrawer = () => {
-    this.setState(prevState => ({ showSideDrawer: !prevState.showSideDrawer }));
-  };
-
   render() {
-    console.log("Lay rendered");
-    const { children } = this.props;
-    const navigationItemToShow = this.props.isMobile ? (
+    const { children, isMobile } = this.props;
+    const navigationItemToShow = isMobile ? (
       <React.Fragment>
-        <DrawerToggle
-          openOrClose={() => this.handleOpenOrCloseSideDrawer()}
-          opened={this.state.showSideDrawer}
-        />
-        <SideDrawer
-          closed={() => this.handleOpenOrCloseSideDrawer()}
-          showSideDrawer={this.state.showSideDrawer}
-        />
+        <DrawerToggle />
+        <SideDrawer />
       </React.Fragment>
     ) : (
       <Toolbar />

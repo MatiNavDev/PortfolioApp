@@ -1,27 +1,33 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import classes from "./SideDrawer.css";
 import NavigationItems from "../NavigationItems/NavigationItems";
 import MediaItems from "../MediaItems/MediaItems";
 
-const sideDrawer = props => {
+class SideDrawer extends Component {
   /**
    * TODO:
    * Hacer que mi nombre te abra el mail con mi direccion de correo puesta. Hacer una pantalla que sea para el envio de mail
    * y mandarlo yo.
    */
-
-  const { showSideDrawer, closed } = props;
-  let elementsToShow = null;
-  if (showSideDrawer)
-    elementsToShow = (
+  render() {
+    return this.props.showSideDrawer ? (
       <nav className={classes.SideDrawer}>
-        <NavigationItems closed={closed} isMobile={true} />
+        <NavigationItems />
         <MediaItems />
       </nav>
-    );
+    ) : null;
+  }
+}
 
-  return elementsToShow;
+const mapStateToProps = state => ({
+  showSideDrawer: state.layout.showSideDrawer
+});
+
+SideDrawer.propTypes = {
+  showSideDrawer: PropTypes.bool
 };
 
-export default sideDrawer;
+export default connect(mapStateToProps)(SideDrawer);

@@ -9,12 +9,30 @@
 
 @media (max-width: 570px) {
   .MediaItems {
+    transform: translateX(100%);
     margin-top: 44px;
-    opacity: 0;
     animation: showUpMan 1s linear 1.2s forwards;
   }
 
   .MediaItems a {
     color: white;
+  }
+}
+
+@keyframes showUpMan {
+  50% {
+    transform: translateX(-25%);
+  }
+
+  75% {
+    transform: translateX(15%);
+  }
+
+  90% {
+    transform: translateX(-5%);
+  }
+
+  100% {
+    transform: translateX(0%);
   }
 }

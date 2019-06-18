@@ -9,6 +9,8 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import commonReducer from "./store/reducers/common";
+import layoutReducer from "./store/reducers/layout";
+import meReducer from "./store/reducers/me";
 
 const composeEnhancers =
   process.env.NODE_ENV == "development"
@@ -16,7 +18,9 @@ const composeEnhancers =
     : compose;
 
 const rootReducer = combineReducers({
-  common: commonReducer
+  common: commonReducer,
+  layout: layoutReducer,
+  me: meReducer
 });
 
 // const store = createStore(reducer, applyMiddleware(logger, xxx , ...)); al igual que en express

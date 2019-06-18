@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -77,7 +77,11 @@ App.propTypes = {
   onSetIsMobile: PropTypes.func
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(App);
+//cuando se usa redux, el componente que declara las rutas tiene que ir con withRouter.
+
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(App)
+);

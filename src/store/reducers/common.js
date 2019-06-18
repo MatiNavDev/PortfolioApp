@@ -6,9 +6,8 @@ const initialState = {
   isMobile: false
 };
 
-const setIsMobile = (state, action) => {
-  return updateObject(state, { isMobile: action.isMobile });
-};
+const setIsMobile = (state, action) =>
+  updateObject(state, { isMobile: action.isMobile });
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

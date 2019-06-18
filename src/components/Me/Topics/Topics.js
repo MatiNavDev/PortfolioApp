@@ -1,28 +1,39 @@
-import React from "react";
+import React, { Component } from "react";
 import Proptypes from "prop-types";
+import { connect } from "react-redux";
 
 import Topic from "./Topic/Topic";
 import classes from "./Topics.css";
+import * as actions from "../../../store/actions";
 
-const topics = props => {
-  return (
-    <div className={classes.Topics}>
-      {props.topics.map((t, i) => (
-        <Topic
-          key={i}
-          name={t.topic}
-          clicked={() => {
-            props.clicked(t.id);
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+class Topics extends Component {
+  render() {
+    return (
+      <div className={classes.Topics}>
+        {this.props.topics.map((t, i) => (
+          <Topic
+            key={i}
+            name={t.topic}
+            clicked={() => {
+              this.props.onSelectTopic(t.id);
+            }}
+          />
+        ))}
+      </div>
+    );
+  }
+}
 
-topics.propTypes = {
+const mapDispatchToProps = dispatch => ({
+  onSelectTopic: topicId => dispatch(actions.setSelectedTopic(topicId))
+});
+
+Topics.propTypes = {
   topics: Proptypes.array,
-  clicked: Proptypes.func
+  onSelectTopic: Proptypes.func
 };
 
-export default topics;
+export default connect(
+  null,
+  mapDispatchToProps
+)(Topics);
