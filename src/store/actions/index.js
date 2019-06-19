@@ -4,5 +4,6 @@ export { setSelectedTopic, fetchTopics } from "./me";
 export {
   setToggleHandler,
   fetchProyectsImgWithText,
-  fetchTecnologiesImgWithText
+  fetchTecnologiesImgWithText,
+  fetchDetailedCard
 } from "./experience";

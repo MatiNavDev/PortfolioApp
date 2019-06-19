@@ -1,38 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
+import * as actions from "../../../store/actions";
 
 class DetailedCard extends Component {
-  state = {
-    detailedCardFetched: null
-  };
-
   componentDidMount() {
     /**
      * Recibe un id, en base a ese id hace el fetch con el servidor, obtiene la data y muestra.
      */
     const { id } = this.props.match;
-
-    const detailedCardFetched = {
-      title: "Titulo",
-      text: "TEXTO",
-      image:
-        "https://i.kinja-img.com/gawker-media/image/upload/s--PnSCSSFQ--/c_scale,f_auto,fl_progressive,pg_1,q_80,w_800/z7jcryloxjedsztssw39.jpg",
-      type: "Projectos",
-      related: [
-        {
-          id: 1,
-          title: "React",
-          color: "blue"
-        },
-        {
-          id: 2,
-          title: "Node Js",
-          color: "lightgreen"
-        }
-      ]
-    };
-
-    this.setState({ detailedCardFetched });
+    this.props.onFetchDetailedCard(id);
   }
 
   onShowExperienceCardDetail = id => {
@@ -40,7 +18,7 @@ class DetailedCard extends Component {
   };
 
   render() {
-    const detailedCardFetched = this.state.detailedCardFetched;
+    const detailedCardFetched = this.props.detailedCardFetched;
     let componentToShow;
 
     if (detailedCardFetched) {
@@ -74,10 +52,25 @@ class DetailedCard extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  detailedCardFetched: state.experience.detailedCardFetched,
+  loading: state.experience.loading,
+  errorFromFetch: state.experience.errorFromFetch
+});
+
+const mapDispatchToProps = dispatch => ({
+  onFetchDetailedCard: id => dispatch(actions.fetchDetailedCard(id))
+});
+
 DetailedCard.propTypes = {
   history: PropTypes.object,
   match: PropTypes.object,
-  onGoToDetailedCard: PropTypes.func
+  detailedCardFetched: PropTypes.object,
+  onGoToDetailedCard: PropTypes.func,
+  onFetchDetailedCard: PropTypes.func
 };
 
-export default DetailedCard;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DetailedCard);

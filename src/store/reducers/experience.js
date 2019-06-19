@@ -5,6 +5,7 @@ const initialState = {
   loading: false,
   tecnologiesImgWithText: [],
   proyectsImgWithText: [],
+  detailedCardFetched: null,
   toggleOptionChosed: "P"
 };
 
@@ -20,19 +21,27 @@ const fetchTecnologiesWithTextSuccess = (state, action) =>
     loading: false
   });
 
+const fetchDetailedCardSuccess = (state, action) =>
+  updateObject(state, {
+    detailedCardFetched: action.detailedCardFetched,
+    loading: false
+  });
+
 const setToggleHandler = (state, action) =>
   updateObject(state, { toggleOptionChosed: action.toggleOptionChosed });
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_PROYECTS_IMG_WITH_TEXT_START:
-      return setLoading(state, true);
     case actionTypes.FETCH_TECNOLOGIES_WITH_TEXT_START:
+    case actionTypes.FETCH_DETAILED_CARD_START:
       return setLoading(state, true);
     case actionTypes.FETCH_PROYECTS_IMG_WITH_TEXT_SUCCESS:
       return fetchProjectsImgWithTextSuccess(state, action);
     case actionTypes.FETCH_TECNOLOGIES_WITH_TEXT_SUCCESS:
       return fetchTecnologiesWithTextSuccess(state, action);
+    case actionTypes.FETCH_DETAILED_CARD_SUCCESS:
+      return fetchDetailedCardSuccess(state, action);
     case actionTypes.SET_TOGGLE_HANDLER:
       return setToggleHandler(state, action);
     default:
