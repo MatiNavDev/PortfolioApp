@@ -7,3 +7,5 @@ export {
   fetchTecnologiesImgWithText,
   fetchDetailedCard
 } from "./experience";
+
+export { fetchOpinionCards } from "./contact";
