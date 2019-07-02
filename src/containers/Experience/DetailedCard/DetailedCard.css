@@ -1,0 +1,39 @@
+.DetailedCard {
+  padding: 2%;
+}
+
+.DetailedCard .ContentCol {
+  display: inline-flex;
+  width: 50%;
+  padding: 2%;
+}
+
+.DetailedCard .Title {
+  text-align: center;
+}
+
+.ContentContainer {
+  display: flex;
+  margin: 60px 0;
+}
+
+.SliderContainer {
+  width: 50%;
+}
+
+.ContentCol {
+  display: inline-flex;
+  width: 50%;
+  padding: 2%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ContentCol div {
+  margin: auto;
+}
+
+.RelatedContainer {
+  display: flex;
+  justify-content: space-around;
+}

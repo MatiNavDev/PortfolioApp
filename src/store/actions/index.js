@@ -4,8 +4,7 @@ export { setSelectedTopic, fetchTopics } from "./me";
 export {
   setToggleHandler,
   fetchProyectsImgWithText,
-  fetchTecnologiesImgWithText,
-  fetchDetailedCard
+  fetchTecnologiesImgWithText
 } from "./experience";
-
+export { fetchDetailedCard } from "./detailedCard";
 export { fetchOpinionCards } from "./contact";

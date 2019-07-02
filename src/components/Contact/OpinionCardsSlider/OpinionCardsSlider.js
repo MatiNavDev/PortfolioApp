@@ -52,7 +52,7 @@ class OpinionCardsSlider extends Component {
     ));
 
     /**
-     * Esto funciona como si tuvieras un cadrado siempre marcado, luego tenes un rectangulo con toodas las cards
+     * Esto funciona como si tuvieras un cuadrado siempre marcado, luego tenes un rectangulo con toodas las cards
      * el cual se va moviendo y genera el efecto de la slide. Luego se le agrega un poco de estilos a lo que "entra y sale"
      * al cuadrado ese y a las cards que estan afuera del cuadrado. Por ultimo le agrega un linear gradient a los costados
      * para crear el smoke.

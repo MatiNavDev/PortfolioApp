@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Carousel } from "react-responsive-carousel";
+import AwesomeSlider from "react-awesome-slider";
+import AwsSliderStyles from "react-awesome-slider/src/styles.js";
 
 import * as actions from "../../../store/actions";
+import classes from "./DetailedCard.css";
+
+//TODO: CAMBIAR EL HASHEADOR DE CLASES DE CSS. NO DA PARA MAS. HACER QUE ANDE EL CAROUSEL
 
 class DetailedCard extends Component {
   componentDidMount() {
@@ -18,44 +24,52 @@ class DetailedCard extends Component {
   };
 
   render() {
-    const detailedCardFetched = this.props.detailedCardFetched;
-    let componentToShow;
+    const { loading, detailedCardFetched } = this.props;
 
-    if (detailedCardFetched) {
-      const listOfRelateds = detailedCardFetched.related.map(r => (
-        <span
-          onClick={() => this.onShowExperienceCardDetail(r.id)}
-          key={r.id}
-          style={{ backgroundColor: r.color }}
-        >
-          {r.title}
-        </span>
-      ));
+    //TODO: handle error
+    if (loading) return <div>Loading...</div>;
 
-      componentToShow = (
-        <div>
-          <h3>{detailedCardFetched.title}</h3>
-          <text> {detailedCardFetched.text} </text>
-          <div
-            style={{
-              backgroundImage: `url('${detailedCardFetched.image}')`
-            }}
-          />
-          <div>{listOfRelateds}</div>
+    const listOfRelateds = detailedCardFetched.related.map(r => (
+      <span
+        onClick={() => this.onShowExperienceCardDetail(r.id)}
+        key={r.id}
+        style={{ backgroundColor: r.color }}
+      >
+        {r.title}
+      </span>
+    ));
+
+    const imagesCarousel = detailedCardFetched.images.map((img, i) => (
+      <div key={i} data-src={img} />
+    ));
+
+    const slider = (
+      <AwesomeSlider cssModule={AwsSliderStyles}>
+        <div data-src={detailedCardFetched.images[0]} />
+        <div data-src={detailedCardFetched.images[1]} />
+        <div data-src={detailedCardFetched.images[2]} />
+      </AwesomeSlider>
+    );
+
+    return (
+      <div className={classes.DetailedCard}>
+        <h1 className={classes.Title}>{detailedCardFetched.title}</h1>
+        <div className={classes.ContentContainer}>
+          <div className={classes.ContentCol}>
+            <p> {detailedCardFetched.text} </p>
+          </div>
+          <div className={classes.ContentCol}>{slider}</div>
         </div>
-      );
-    } else {
-      componentToShow = <div>Loading...</div>;
-    }
-
-    return componentToShow;
+        <div className={classes.RelatedContainer}>{listOfRelateds}</div>
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => ({
-  detailedCardFetched: state.experience.detailedCardFetched,
-  loading: state.experience.loading,
-  errorFromFetch: state.experience.errorFromFetch
+  detailedCardFetched: state.detailedCard.detailedCardFetched,
+  loading: state.detailedCard.loading,
+  errorFromFetch: state.detailedCard.errorFromFetch
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -65,6 +79,7 @@ const mapDispatchToProps = dispatch => ({
 DetailedCard.propTypes = {
   history: PropTypes.object,
   match: PropTypes.object,
+  loading: PropTypes.bool,
   detailedCardFetched: PropTypes.object,
   onGoToDetailedCard: PropTypes.func,
   onFetchDetailedCard: PropTypes.func

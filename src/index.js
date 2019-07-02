@@ -13,6 +13,7 @@ import layoutReducer from "./store/reducers/layout";
 import meReducer from "./store/reducers/me";
 import experienceReducer from "./store/reducers/experience";
 import contactReducer from "./store/reducers/contact";
+import detailedCardReducer from "./store/reducers/detailedCard";
 
 const composeEnhancers =
   process.env.NODE_ENV == "development"
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
   layout: layoutReducer,
   me: meReducer,
   experience: experienceReducer,
-  contact: contactReducer
+  contact: contactReducer,
+  detailedCard: detailedCardReducer
 });
 
 // const store = createStore(reducer, applyMiddleware(logger, xxx , ...)); al igual que en express

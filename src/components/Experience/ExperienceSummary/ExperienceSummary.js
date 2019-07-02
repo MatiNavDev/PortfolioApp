@@ -17,8 +17,12 @@ class ExperienceSummary extends Component {
     const {
       proyectsImgWithText,
       tecnologiesImgWithText,
-      toggleOptionChosed
+      toggleOptionChosed,
+      loading
     } = this.props;
+
+    //TODO: Manejar aca los errores
+    if (loading) return <div>Loading...</div>;
 
     const cards =
       toggleOptionChosed === "P" ? proyectsImgWithText : tecnologiesImgWithText;
@@ -41,7 +45,8 @@ class ExperienceSummary extends Component {
 const mapStateToProps = state => ({
   proyectsImgWithText: state.experience.proyectsImgWithText,
   tecnologiesImgWithText: state.experience.tecnologiesImgWithText,
-  toggleOptionChosed: state.experience.toggleOptionChosed
+  toggleOptionChosed: state.experience.toggleOptionChosed,
+  loading: state.experience.loading
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -55,6 +60,7 @@ ExperienceSummary.propTypes = {
   proyectsImgWithText: PropTypes.array,
   tecnologiesImgWithText: PropTypes.array,
   toggleOptionChosed: PropTypes.string,
+  loading: PropTypes.bool,
   onFetchProyectsImgWithText: PropTypes.func,
   onFetchTecnologiesImgWithText: PropTypes.func
 };
