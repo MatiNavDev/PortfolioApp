@@ -6,6 +6,7 @@ import TextWithName from "../../components/Me/TextWithName/TextWithName";
 import Topics from "../../components/Me/Topics/Topics";
 import classes from "./Me.css";
 import * as actions from "../../store/actions";
+import { TextGhost, ImageGhost } from "../../components/UI/Ghosts";
 
 class Me extends Component {
   componentDidMount() {
@@ -14,7 +15,9 @@ class Me extends Component {
 
   //TODO: (manejar las sombras y manejar el error) en el fetch
   render() {
-    const { topicIdSelected, topics, loading } = this.props;
+    const { topicIdSelected, topics, loading, error } = this.props;
+
+    if (loading) return;
 
     let topicToShow = topics.find(t => t.id === topicIdSelected);
 
@@ -42,7 +45,10 @@ class Me extends Component {
         </div>
       </div>
     ) : (
-      <div>Loading...</div>
+      <div className={classes.GhostsContainer}>
+        <TextGhost />
+        <ImageGhost withTopics />
+      </div>
     );
   }
 }
@@ -60,7 +66,8 @@ Me.propTypes = {
   topicIdSelected: PropTypes.number,
   topics: PropTypes.array,
   loading: PropTypes.bool,
-  onFetchTopics: PropTypes.func
+  onFetchTopics: PropTypes.func,
+  error: PropTypes.object
 };
 
 export default connect(
