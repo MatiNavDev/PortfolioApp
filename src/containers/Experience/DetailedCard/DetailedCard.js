@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Carousel } from "react-responsive-carousel";
 import AwesomeSlider from "react-awesome-slider";
 import AwsSliderStyles from "react-awesome-slider/src/styles.js";
 
 import * as actions from "../../../store/actions";
 import classes from "./DetailedCard.css";
+import {
+  AsideLinesGhost,
+  TextGhost,
+  ImageGhost
+} from "../../../components/UI/Ghosts";
 
 //TODO: CAMBIAR EL HASHEADOR DE CLASES DE CSS. NO DA PARA MAS. HACER QUE ANDE EL CAROUSEL
 
@@ -25,33 +29,30 @@ class DetailedCard extends Component {
 
   render() {
     const { loading, detailedCardFetched } = this.props;
+    let listOfRelateds, slider;
 
-    //TODO: handle error
-    if (loading) return <div>Loading...</div>;
+    if (detailedCardFetched.related) {
+      listOfRelateds = detailedCardFetched.related.map(r => (
+        <div
+          className={classes.relatedImg}
+          onClick={() => this.onShowExperienceCardDetail(r.id)}
+          key={r.id}
+          style={{
+            backgroundImage: `url(${r.img})`
+          }}
+        />
+      ));
 
-    const listOfRelateds = detailedCardFetched.related.map(r => (
-      <span
-        onClick={() => this.onShowExperienceCardDetail(r.id)}
-        key={r.id}
-        style={{ backgroundColor: r.color }}
-      >
-        {r.title}
-      </span>
-    ));
+      slider = (
+        <AwesomeSlider cssModule={AwsSliderStyles}>
+          <div data-src={detailedCardFetched.images[0]} />
+          <div data-src={detailedCardFetched.images[1]} />
+          <div data-src={detailedCardFetched.images[2]} />
+        </AwesomeSlider>
+      );
+    }
 
-    const imagesCarousel = detailedCardFetched.images.map((img, i) => (
-      <div key={i} data-src={img} />
-    ));
-
-    const slider = (
-      <AwesomeSlider cssModule={AwsSliderStyles}>
-        <div data-src={detailedCardFetched.images[0]} />
-        <div data-src={detailedCardFetched.images[1]} />
-        <div data-src={detailedCardFetched.images[2]} />
-      </AwesomeSlider>
-    );
-
-    return (
+    return !loading && listOfRelateds ? (
       <div className={classes.DetailedCard}>
         <h1 className={classes.Title}>{detailedCardFetched.title}</h1>
         <div className={classes.ContentContainer}>
@@ -61,6 +62,17 @@ class DetailedCard extends Component {
           <div className={classes.ContentCol}>{slider}</div>
         </div>
         <div className={classes.RelatedContainer}>{listOfRelateds}</div>
+      </div>
+    ) : (
+      <div className={classes.GhostsContainer}>
+        <TextGhost amountOfLines={1} contentHeight={40} />
+        <div className={classes.textWithImageContainer}>
+          <TextGhost amountOfLines={8} />
+          <ImageGhost />
+        </div>
+        <div className={classes.relatedGhostsContainer}>
+          <AsideLinesGhost amountOfLines={4} />
+        </div>
       </div>
     );
   }

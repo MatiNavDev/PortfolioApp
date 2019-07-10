@@ -45,7 +45,7 @@ const fetchTopics = () => dispatch => {
       }
     ];
     dispatch(fetchTopicsSuccess(topicsWithText));
-  }, 300000);
+  }, 1000);
 };
 
 const setSelectedTopic = topicIdSelected => ({

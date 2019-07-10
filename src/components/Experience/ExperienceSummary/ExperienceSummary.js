@@ -6,6 +6,7 @@ import classes from "./ExperienceSummary.css";
 import ExperienceCard from "../../UI/ExperienceCard/ExperienceCard";
 import ToggleExperienceButton from "../../UI/ToggleExperienceButton/ToggleExperienceButton";
 import * as actions from "../../../store/actions";
+import { ImagesGroupGhost } from "../../UI/Ghosts";
 
 class ExperienceSummary extends Component {
   componentDidMount() {
@@ -21,9 +22,6 @@ class ExperienceSummary extends Component {
       loading
     } = this.props;
 
-    //TODO: Manejar aca los errores
-    if (loading) return <div>Loading...</div>;
-
     const cards =
       toggleOptionChosed === "P" ? proyectsImgWithText : tecnologiesImgWithText;
 
@@ -31,12 +29,16 @@ class ExperienceSummary extends Component {
       <ExperienceCard key={c.id} id={c.id} title={c.title} image={c.image} />
     ));
 
-    return (
+    return !loading && cardsComponent ? (
       <div className={classes.Experience}>
         <div className={classes.ToggleContainer}>
           <ToggleExperienceButton />
         </div>
         <div className={classes.CardsContainer}>{cardsComponent}</div>
+      </div>
+    ) : (
+      <div className={classes.GhostsContainerImages}>
+        <ImagesGroupGhost />
       </div>
     );
   }

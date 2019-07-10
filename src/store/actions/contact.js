@@ -49,7 +49,7 @@ const fetchOpinionCards = () => dispatch => {
     ];
 
     dispatch(fetchOpinionCardsSuccess(opinionCards));
-  }, 100);
+  }, 1000);
 };
 
 export { fetchOpinionCards };

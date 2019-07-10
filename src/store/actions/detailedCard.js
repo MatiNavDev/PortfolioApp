@@ -27,12 +27,30 @@ const fetchDetailedCard = id => dispatch => {
         {
           id: 1,
           title: "React",
-          color: "blue"
+          color: "blue",
+          img:
+            "https://portfolio-app-react.s3.us-east-2.amazonaws.com/ReactJs.png"
         },
         {
           id: 2,
           title: "Node Js",
-          color: "lightgreen"
+          color: "lightgreen",
+          img:
+            "https://portfolio-app-react.s3.us-east-2.amazonaws.com/Node+Js.png"
+        },
+        {
+          id: 3,
+          title: "Angular",
+          color: "lightgreen",
+          img:
+            "https://portfolio-app-react.s3.us-east-2.amazonaws.com/Angular.png"
+        },
+        {
+          id: 4,
+          title: "MongoDB",
+          color: "lightgreen",
+          img:
+            "https://portfolio-app-react.s3.us-east-2.amazonaws.com/Mongo.jpg"
         }
       ]
     };

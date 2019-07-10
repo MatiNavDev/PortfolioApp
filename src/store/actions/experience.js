@@ -50,7 +50,7 @@ const fetchTecnologiesImgWithText = () => dispatch => {
     ];
 
     dispatch(fetchTecnologiesImgWithTextSuccess(tecnologiesImgWithText));
-  }, 100);
+  }, 1000);
 };
 
 const fetchProyectsImgWithText = () => dispatch => {
@@ -84,7 +84,7 @@ const fetchProyectsImgWithText = () => dispatch => {
     ];
 
     dispatch(fetchProyectsImgWithTextSuccess(proyectsImgWithText));
-  }, 100);
+  }, 1000);
 };
 
 const setToggleHandler = toggleOptionChosed => ({

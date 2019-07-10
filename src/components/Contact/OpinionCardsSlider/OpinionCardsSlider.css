@@ -58,3 +58,13 @@
   width: 50%;
   right: 0;
 }
+
+.GhostsContainerImages {
+  display: flex;
+  justify-content: center;
+}
+
+.GhostsContainerImages svg {
+  height: 80%;
+  width: 80%;
+}

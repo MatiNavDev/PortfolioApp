@@ -2,7 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 import { setLoading, updateObject } from "../../shared/utility";
 
 const initialState = {
-  detailedCardFetched: null,
+  detailedCardFetched: {},
   errorFromFetch: null,
   loading: true
 };

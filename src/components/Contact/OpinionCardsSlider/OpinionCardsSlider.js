@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import OpinionCard from "./OpinionCard/OpinionCard";
 import * as action from "../../../store/actions";
 import classes from "./OpinionCardsSlider.css";
+import { ImagesGroupGhost } from "../../UI/Ghosts";
 
 class OpinionCardsSlider extends Component {
   state = {
@@ -38,7 +39,7 @@ class OpinionCardsSlider extends Component {
   };
 
   render() {
-    const { cards } = this.props;
+    const { cards, loading } = this.props;
     const { cardSelectedPos } = this.state;
 
     const cardElements = cards.map((card, i) => (
@@ -57,8 +58,7 @@ class OpinionCardsSlider extends Component {
      * al cuadrado ese y a las cards que estan afuera del cuadrado. Por ultimo le agrega un linear gradient a los costados
      * para crear el smoke.
      */
-
-    return (
+    return !loading && cardElements ? (
       <div>
         <div className={classes.Col}>
           <div className={[classes.CardsSlider, classes.Active].join(" ")}>
@@ -86,6 +86,10 @@ class OpinionCardsSlider extends Component {
           />
         </div>
       </div>
+    ) : (
+      <div className={classes.GhostsContainerExperience}>
+        <ImagesGroupGhost />
+      </div>
     );
   }
 }
@@ -102,6 +106,7 @@ const mapDispatchToProps = dispatch => ({
 
 OpinionCardsSlider.propTypes = {
   cards: PropTypes.array,
+  loading: PropTypes.bool,
   onFetchOpinionCards: PropTypes.func
 };
 

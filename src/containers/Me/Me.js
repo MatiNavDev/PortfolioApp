@@ -17,8 +17,6 @@ class Me extends Component {
   render() {
     const { topicIdSelected, topics, loading, error } = this.props;
 
-    if (loading) return;
-
     let topicToShow = topics.find(t => t.id === topicIdSelected);
 
     const topicsForSelect = topics.map(t => ({
@@ -46,7 +44,7 @@ class Me extends Component {
       </div>
     ) : (
       <div className={classes.GhostsContainer}>
-        <TextGhost />
+        <TextGhost amountOfLines={8} />
         <ImageGhost withTopics />
       </div>
     );

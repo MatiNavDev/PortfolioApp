@@ -17,8 +17,8 @@ const ImageGhost = props => {
 
   return (
     <ContentLoader
-      height={200}
-      width={400}
+      height={topics ? 200 : 132}
+      width={topics ? 400 : 330}
       speed={2}
       primaryColor="#f3f3f3"
       secondaryColor="#ecebeb"
